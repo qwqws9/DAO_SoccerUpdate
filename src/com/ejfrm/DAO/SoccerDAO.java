@@ -327,4 +327,150 @@ public class SoccerDAO {
 		}
 	}
 
+	// 게시판 DAO
+
+	public ArrayList<SoccerVO> selectAllboard() {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ArrayList<SoccerVO> list = new ArrayList<>();
+
+		String sql = "select * from s_board";
+
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				SoccerVO sVo = new SoccerVO();
+				sVo.setNum(rs.getInt("num"));
+				sVo.setTitle(rs.getString("title"));
+				sVo.setHit(rs.getInt("hit"));
+				sVo.setMid(rs.getString("m_id"));
+				sVo.setWritedate(rs.getTimestamp("writedate"));
+
+				list.add(sVo);
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(con);
+		}
+		return list;
+	}
+
+	public void writeBoard(SoccerVO sVo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "insert into s_board(num,pass,title,content,writedate,m_id)"
+				+ " values(seq_board.nextval,?,?,?,sysdate,?)";
+
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, sVo.getPass());
+			pstmt.setString(2, sVo.getTitle());
+			pstmt.setString(3, sVo.getContent());
+			pstmt.setString(4, sVo.getMid());
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(con);
+		}
+	}
+
+	public SoccerVO selectOneBoard(String num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		SoccerVO sVo = new SoccerVO();
+		String sql = "select * from s_board where num = ?";
+
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, num);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				sVo.setNum(Integer.parseInt(num));
+				sVo.setMid(rs.getString("m_id"));
+				sVo.setTitle(rs.getString("title"));
+				sVo.setContent(rs.getString("content"));
+				sVo.setPass(rs.getString("pass"));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(con);
+		}
+		return sVo;
+	}
+
+	public void updateBoard(SoccerVO sVo) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "update s_board set title=?, content=?, pass=? where num = ? ";
+
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, sVo.getTitle());
+			pstmt.setString(2, sVo.getContent());
+			pstmt.setString(3, sVo.getPass());
+			pstmt.setInt(4, sVo.getNum());
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(con);
+		}
+	}
+
+	public void deleteBoard(String num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "delete from s_board where num = ?";
+
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, num);
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(con);
+		}
+	}
+
+	public void hitUp(String num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+
+		String sql = "update s_board set hit = hit+1 where num = ?";
+
+		try {
+			con = getConnection();
+			pstmt = con.prepareStatement(sql);
+
+			pstmt.setString(1, num);
+
+			pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(con);
+		}
+	}
+
 }

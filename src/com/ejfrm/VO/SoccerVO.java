@@ -1,5 +1,7 @@
 package com.ejfrm.VO;
 
+import java.sql.Timestamp;
+
 public class SoccerVO {
 	private int code;
 	private String teamname;
@@ -8,14 +10,69 @@ public class SoccerVO {
 	private String coach;
 	private String players;
 	private String picture;
+	//유저 VO
 	private String id;
 	private String pw;
 	private String email;
 	private String phone;
 	private String profile;
 	private int grade;
+	//게시판 VO
+	private int num;
+	private String pass;
+	private String title;
+	private String content;
+	private int hit;
+	private Timestamp writedate;
+	private String mid;
 	
 	
+	
+	
+	
+	
+	public String getMid() {
+		return mid;
+	}
+	public void setMid(String mid) {
+		this.mid = mid;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getContent() {
+		return content;
+	}
+	public void setContent(String content) {
+		this.content = content;
+	}
+	public int getHit() {
+		return hit;
+	}
+	public void setHit(int hit) {
+		this.hit = hit;
+	}
+	public Timestamp getWritedate() {
+		return writedate;
+	}
+	public void setWritedate(Timestamp writedate) {
+		this.writedate = writedate;
+	}
 	public String getId() {
 		return id;
 	}

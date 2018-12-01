@@ -11,9 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ejfrm.DAO.SoccerDAO;
 
-/**
- * Servlet implementation class idCheckServlet
- */
+
 @WebServlet("/idCheck.do")
 public class idCheckServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -37,10 +35,7 @@ public class idCheckServlet extends HttpServlet {
 		disp.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

@@ -15,7 +15,8 @@
 			${sessionId.id }님 환영합니다.
 			<a href = "Logout.do?action=session">로그아웃</a>
 			<a href = "UpdateUser.do?id=${sessionId.id }">정보 수정</a>
-			<a href = "DeleteUser.do?id=${sessionId.id }">회원 탈퇴</a>			
+			<a href = "DeleteUser.do?id=${sessionId.id }">회원 탈퇴</a>	
+			<a href = "BoardServlet?command=board_list">게시판</a>		
 		</c:if>
 		
 		<c:if test = "${sessionId == null }">
