@@ -9,6 +9,7 @@
 <script type="text/javascript" src = "script/check.js"></script>
 </head>
 <body>
+<jsp:include page="../header.jsp"></jsp:include>
 <h1>${message }</h1>
 <form action = "Delete.do" method = "post" name = "check" enctype = "multipart/form-data">
 <table>

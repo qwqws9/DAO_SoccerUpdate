@@ -8,22 +8,8 @@
 <title>구단 정보</title>
 </head>
 <body>
-<h1>구단 정보</h1>
-
-
-		<c:if test = "${sessionId != null }">
-			${sessionId.id }님 환영합니다.
-			<a href = "Logout.do?action=session">로그아웃</a>
-			<a href = "UpdateUser.do?id=${sessionId.id }">정보 수정</a>
-			<a href = "DeleteUser.do?id=${sessionId.id }">회원 탈퇴</a>	
-			<a href = "BoardServlet?command=board_list">게시판</a>		
-		</c:if>
-		
-		<c:if test = "${sessionId == null }">
-			<td><a href = "Login.do?action=login">로그인</a></td>
-			<td><a href = "Login.do?action=signup">회원가입</a></td>
-		</c:if>
-		
+<jsp:include page="../header.jsp"></jsp:include>
+<h1>구단 정보</h1>	
 <table border="1">
 	<tr>
 	<c:if test = "${sessionId.grade == 0 }">

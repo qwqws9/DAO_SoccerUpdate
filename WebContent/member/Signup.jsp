@@ -9,6 +9,7 @@
 </head>
 <body>
 <form action = "Signup.do" method = "post" name = "check" enctype = "multipart/form-data">
+<jsp:include page="../header.jsp"></jsp:include>
 <H1>회원가입 페이지</H1>
 <table>
 	<tr>

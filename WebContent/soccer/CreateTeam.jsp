@@ -8,6 +8,7 @@
 <script type="text/javascript" src = "script/check.js"></script>
 </head>
 <body>
+<jsp:include page="../header.jsp"></jsp:include>
 <h1>구단 생성</h1>
 <form action = "Create.do" method = "post" name = "check" enctype = "multipart/form-data">
 <table>

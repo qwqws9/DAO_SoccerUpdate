@@ -27,7 +27,7 @@ public class BoardPass implements Action {
 			SoccerVO sVo = new SoccerVO();
 			sVo = sDao.selectOneBoard(num);
 			if (sVo.getPass().equals(pass)) {
-				url = "board/boardPassOk.jsp";
+				url = "board/closeWindow.jsp";
 			} else {
 				url = "board/boardPass.jsp";
 				request.setAttribute("message", "비밀번호가 틀렸습니다");

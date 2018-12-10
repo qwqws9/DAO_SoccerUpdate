@@ -9,6 +9,7 @@
 <script type="text/javascript" src = "script/check.js"></script>
 </head>
 <body>
+<jsp:include page="../header.jsp"></jsp:include>
 <h1>구단 수정</h1>
 <form action = "Update.do" method = "post" name = "check" enctype = "multipart/form-data">
 <table>

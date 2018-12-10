@@ -9,6 +9,7 @@
 <script type="text/javascript" src= "script/check.js"></script>
 </head>
 <body>
+<jsp:include page="../header.jsp"></jsp:include>
 <h1>로그인</h1>
 <form action = "Login.do" method = "post" name = "check" >
 <table>

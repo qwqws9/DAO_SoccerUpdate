@@ -9,25 +9,23 @@ import javax.servlet.http.HttpServletResponse;
 import com.ejfrm.DAO.SoccerDAO;
 import com.ejfrm.VO.SoccerVO;
 
-public class BoardDelete implements Action {
+public class CommentDelete implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String cnum = request.getParameter("cnum");
+		
 		SoccerDAO sDao = SoccerDAO.getInstance();
 		
-		String num = request.getParameter("num");
 		SoccerVO sVo = new SoccerVO();
-		sVo = sDao.selectOneBoard(num);
-		int pnum = sVo.getRpnum();
-		int step = sVo.getRstep();
-		int indent = sVo.getRindent();
+		sVo = sDao.selectComment(cnum);
+		sDao.commentDelete(cnum);
+		request.setAttribute("sVo", sVo);
 		
-		sDao.deleteBoard(num,pnum,step,indent);
+		request.getRequestDispatcher("board/commentOk.jsp").forward(request, response);
 		
-		new BoardList().execute(request, response);
 		
 	}
 
-	
 }

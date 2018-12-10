@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.omg.CORBA.portable.ApplicationException;
+
 import com.ejfrm.boardaction.Action;
 
 @WebServlet("/BoardServlet")
@@ -16,6 +18,8 @@ public class BoardServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		
 		HttpSession session = request.getSession();
 		if(session.getAttribute("sessionId") != null) {

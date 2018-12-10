@@ -7,6 +7,7 @@
 <title>회원 삭제</title>
 </head>
 <body>
+<jsp:include page="../header.jsp"></jsp:include>
 <h2>정말 탈퇴하시겠습니까?</h2>
 <form action = "DeleteUser.do" method = "post" >
 	<tr>
