@@ -13,6 +13,8 @@
 <form action = "BoardServlet" method = "post" name = "check">
 <input type = "hidden" name = "command" value = "board_update">
 <input type = "hidden" name = "num" value = "${param.num }">
+<input type = "hidden" name = "pnum" value = "${sVo.rpnum }">
+
 <table border="1">
 	<tr>
 		<td>제목</td>

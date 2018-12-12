@@ -471,26 +471,48 @@ public class SoccerDAO {
 		return sVo;
 	}
 
-	public void updateBoard(SoccerVO sVo) {
+	public void updateBoard(SoccerVO sVo,int pnum) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		
+		
+		if(pnum == 0) {
+			
+			//원글 수정
+			String sql = "update s_board set title=?, content=?, pass=? where num = ? ";
+			try {
+				con = getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, sVo.getTitle());
+				pstmt.setString(2, sVo.getContent());
+				pstmt.setString(3, sVo.getPass());
+				pstmt.setInt(4, sVo.getNum());
+				pstmt.executeUpdate();
 
-		String sql = "update s_board set title=?, content=?, pass=? where num = ? ";
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeConnection(con);
+			}
+		}else {
+			//답글 수정
+			String sql = "update s_reply set r_title=?, r_content=?, r_pass=? where r_num = ? ";
+			try {
+				con = getConnection();
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, sVo.getTitle());
+				pstmt.setString(2, sVo.getContent());
+				pstmt.setString(3, sVo.getPass());
+				pstmt.setInt(4, sVo.getNum());
+				pstmt.executeUpdate();
 
-		try {
-			con = getConnection();
-			pstmt = con.prepareStatement(sql);
-			pstmt.setString(1, sVo.getTitle());
-			pstmt.setString(2, sVo.getContent());
-			pstmt.setString(3, sVo.getPass());
-			pstmt.setInt(4, sVo.getNum());
-			pstmt.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeConnection(con);
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				closeConnection(con);
+			}
 		}
+		
 	}
 
 	public void deleteBoard(String num,int pnum,int step,int indent) {

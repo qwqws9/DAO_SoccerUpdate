@@ -22,10 +22,7 @@ public class BoardUpdate implements Action {
 		if(command.equals("board_update_form")) {
 			
 			url = "board/boardUpdate.jsp";
-			
-		
 			sVo = sDao.selectOneBoard(num);
-			
 			request.setAttribute("sVo", sVo);
 			
 			request.getRequestDispatcher(url).forward(request, response);
@@ -37,16 +34,10 @@ public class BoardUpdate implements Action {
 			sVo.setTitle(request.getParameter("title"));
 			sVo.setContent(request.getParameter("content"));
 			sVo.setPass(request.getParameter("pass"));
-			sDao.updateBoard(sVo);
 			
-			new BoardList().execute(request, response);
+			sDao.updateBoard(sVo,Integer.parseInt(request.getParameter("pnum")));
 			
+			new BoardList().execute(request, response);		
 		}
-		
-		
-		
-		
 	}
-
-	
 }

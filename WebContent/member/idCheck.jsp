@@ -10,6 +10,7 @@
 </head>
 <body>
 <form action = "idCheck.do" method ="get" name ="check">
+<input type = "hidden" name = "action" value= "check">
 <input type = "text" name = "id" value = "${id }">
 <input type = "submit" value = "중복체크"><br>
 
